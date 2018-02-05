@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>智启科技 | [[${pageName}]]</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+    <link th:href="@{/css/plugins/daterangepicker/daterangepicker-bs3.css}" rel="stylesheet">
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation" th:include="nav :: navigation"></nav>
+    <div id="page-wrapper" class="gray-bg">
+        <div class="border-bottom" th:include="header :: headerTop"></div>
+        <div class="row wrapper border-bottom white-bg page-heading" th:fragment="headerNav">
+            <div class="col-lg-10">
+                <h2><span th:text="${pageName}"></span></h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">考勤管理</a>
+                    </li>
+                    <li class="active">
+                        <strong><span th:text="${pageName}"></span></strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div th:replace="component/searchBox :: searchBoxDate(action='records', keywordPlacehoder='', selectList=${selectList}, dateBetween=${dateRange}, addBtnText='新增记录')"></div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>考勤记录列表</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class=" table table-hover" data-page-size="10">
+                                    <thead>
+                                    <tr>
+                                        <th width="5%">ID</th>
+                                        <th width="10%">卡号</th>
+                                        <th width="10%">姓名</th>
+                                        <th width="10%">角色</th>
+                                        <th width="10%">班级</th>
+                                        <th width="15%">入园时间</th>
+                                        <th width="15%">出园时间</th>
+                                        <!-- <th>操作</th> -->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="record, iterStat : ${recordList}">
+                                        <td th:text="${iterStat.index + 1}">Onions</td>
+                                        <td th:text="${record.cardId}">Onions</td>
+                                        <td th:text="${record.gartenUserName}">Onions</td>
+                                        <td th:text="${roleList[record.roleType]}">Onions</td>
+                                        <td th:text="${record.gartenClassName}">Onions</td>
+                                        <td th:text="${#dates.format(record.date, 'yyyy/MM/dd HH:mm:ss')}">Onions</td>
+                                        <td th:text="${#dates.format(record.dateExit, 'yyyy/MM/dd HH:mm:ss')}">Onions</td>
+                                        <!-- <td>
+                                            <a th:href="@{'class/'+${record.id}}" title="修改">
+                                                <i class="fa fa-edit text-navy"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" th:onclick="'javascript:updateState('+${record.id}+',2,0);'"
+                                               title="删除"><i class="fa fa-trash-o text-navy"></i></a>
+                                        </td> -->
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="7">
+                                            <ul id="pageHTML" class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal inmodal" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content animated fadeIn">
+                        <div class="modal-header">
+                            <h5 class="modal-title">新增考勤记录</h5>
+                        </div>
+                        <!-- <form method="post" class="form-horizontal" name="recordForm" th:action="@{record}"> -->
+                        <form method="post" class="form-horizontal" name="recordForm" action="#">
+                            <div class="modal-body">
+                                <input type="hidden" th:field="${record.id}"/>
+                                <input type="hidden" th:field="${record.state}" th:unless="${#strings.isEmpty(record.id)}"/>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">卡号</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" th:field="${record.cardId}" placeholder="请输入卡号"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group"
+                                     th:class="${#strings.isEmpty(record.id) ? 'hidden': 'form-group'}">
+                                    <label class="col-lg-3 control-label">创建时间</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" th:field="${record.date}"
+                                               placeholder="空" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-white" type="button" value="cancel"
+                                        data-dismiss="modal">取消
+                                </button>
+                                <button class="btn btn-primary" type="submit">保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" th:include="footer :: copyright"></div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script th:src="@{/js/jquery-2.1.1.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+
+<!-- Custom and plugin javascript -->
+<script th:src="@{/js/inspinia.js}"></script>
+<script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+<!-- Date range use moment.js same as full calendar plugin -->
+<script th:src="@{/js/plugins/fullcalendar/moment.min.js}"></script>
+<!-- Date range picker -->
+<script th:src="@{/js/plugins/daterangepicker/daterangepicker.js}"></script>
+
+<!-- common -->
+<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+
+<script th:inline="javascript">
+    var pageHTML = [[${pageHTML}]];
+    $(document).ready(function () {
+        $("#pageHTML").html(pageHTML);
+        /*add_record*/
+        $('[name=recordForm]').submit(function (event) {
+            event.preventDefault();
+            var attr = $.map($(this).serializeArray(), function (item, index) {
+                return '"' + item['name'] + '":"' + item['value'] + '"';
+            });
+            //var data = JSON.stringify("{" + attr + "}");
+            var recordForm = $(this);
+            var data = recordForm.serialize();
+            $.ajax({
+                type: "POST",
+                url: "/admin/garten/attend/record",
+                data: data,
+                success: function (data) {
+                    if ("success" === data) {
+                        $('#editModal').modal('hide');
+                        window.location.reload();
+                    } else {
+                        alert(data);
+                    }
+                },
+                error: function () {
+                    alert("系统异常！");
+                }
+            });
+        });
+        $('input[name="daterange"]').daterangepicker({
+            format: 'YYYY/MM/DD',
+            minDate: '2017/12/25',
+            maxDate: '2018/12/31',
+            dateLimit: { days: 90 },
+            timePicker: false,
+            timePickerIncrement: 1,
+            timePicker12Hour: true,
+            locale: {
+                applyLabel: '确定',
+                cancelLabel: '取消',
+                fromLabel: '从',
+                toLabel: '至',
+                daysOfWeek: ['一', '二', '三', '四', '五', '六','日'],
+                monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                firstDay: 1
+            }
+        });
+    });
+
+    /*<![CDATA[*/
+    function updateState(id, state, commendState) {
+        var deleteTag;
+        if (state == 2) {
+            deleteTag = confirm("确定删除此条信息?");
+        } else {
+            deleteTag = true;
+        }
+        if (deleteTag) {
+            $.ajax({
+                type: "POST",
+                url: "newsEditState?id=" + id + "&state=" + state + "&commendState=" + commendState,
+                contentType: "application/json; charset=utf-8",
+                success: function (msg) {
+                    window.location.reload();
+                },
+                error: function () {
+                    alert("系统异常！");
+                }
+            });
+        }
+    }
+
+    var searchForm = document.forms.searchForm;
+    function fillSelect(select, list) {
+        for (var i = select.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+        $.each($.parseJSON(list), function (index, ret) {
+            var option = new Option(ret.text, ret.value);
+            select.add(option);
+        });
+    }
+  /* ]]>*/
+    searchForm.selectId0.addEventListener("change", function (event) {
+        var value = event.target.value;
+        $.ajax({
+            type: "GET",
+            url: "/admin/garten/classes/gartenid/" + value,
+            contentType: "application/json; charset=utf-8",
+            success: function (classList) {
+                fillSelect(searchForm.selectId1, classList);
+            },
+            error: function () {
+                alert("系统异常！");
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

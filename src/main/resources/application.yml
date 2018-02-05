@@ -1,0 +1,82 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: smart-cloud-opadmin
+  http:
+    multipart:
+      maxFileSize: 10Mb
+      maxRequestSize: 100Mb
+  thymeleaf:
+    encoding: UTF-8
+    content-type: text/html
+    cache: false
+  output:
+    ansi:
+      enabled: detect
+
+service:
+  biz:
+    wan:
+      url:
+        base: http://dev.garten.smart-f.cn
+    version: 1.0.5
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: WARN
+    org.springframework.security: WARN
+    org.hibernate: ERROR
+    cn.smart.cloud.biz.opadmin: DEBUG
+  file: smart_cloud_biz_admin.log
+
+text:
+  biz:
+    garten:
+      name: 智启科技
+      video:
+        news:
+          live:
+            title: 您所观看的内容已自动为您保存，时间：{0}
+            des: 为您呈现精彩
+            cover: http://static-10001988.cos.myqcloud.com/resource/images/common/cover_live_news.jpeg
+        play:
+          live:
+            title: 萌宝直播
+            des: 为您展现宝贝生活~
+            cover: http://static-10001988.cos.myqcloud.com/resource/images/common/cover_live_news.jpeg
+            closed: 尊敬的用户您好，您的直播观看功能已到期，请及时续费以保证直播功能的正常使用。如有问题请拨打客服电话咨询：400-022-5085
+            open: 尊敬的用户您好，您的直播观看功能已恢复，祝您使用愉快。
+          closeup:
+            title: 智启萌宝日记
+            des: 为您呈现宝贝精彩~
+        template:
+          closeup:
+            title: 宝贝精彩瞬间，不容轻易错过~
+            remark: 点我！点我！快来看宝贝的精彩表现吧
+        closed: 设备维护中
+        none: 还没有新视频，请耐心等待片刻
+        arreas: 您账户已欠费，请及时向幼儿园缴费以保证功能正常使用。
+        denied: 您尚未开通该业务，请联系幼儿园办理
+    device:
+      camera:
+        closed: 设备维护中
+    wx:
+      subscribe: 用户未登记，请重新关注公众号！
+  tip:
+    success: 成功
+    failed: 失败
+
+com:
+  qcloud:
+    config:
+      api:
+        appid: 1251014592
+        secretid: AKIDE8eW5hYKlPUaCR8E3VvlVFYhu8uCgVd6
+        secretkey: DgehKwJ7Eo2WUcL100v3mY3iFJcyShxp
+      project:
+        appid: 10001988
+        secretid: AKIDEiL7tp8ljebnFpTd1cqpODsixG0PDycT
+        secretkey: ITYg2lsu4Q13P78SDOuOGT5SQfKcMsui

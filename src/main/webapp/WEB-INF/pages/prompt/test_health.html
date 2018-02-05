@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>今日宝贝</title>
+    <link rel="stylesheet" href="https://weui.io/example.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/0.4.3/style/weui.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/0.4.3/style/weui.min.css"/>
+    </meta>
+    </meta>
+</head>
+
+<body ontouchstart>
+
+<div class="weui_panel">
+    <div class="weui_cell">
+        <div class="weui_cell_hd">
+            <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/test_account.jpg" alt=""
+                 style="width:50px;margin-right:5px;display:block">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p style="font-size:16px;">王佳琪</p>
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p style="font-size:16px;">2016年7月15日 星期五</p>
+        </div>
+    </div>
+
+</div>
+
+<div style="margin-top:25px;">
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/height.svg" alt=""
+                     style="width:24px;margin-right:5px;display:block">
+            </div>
+
+            <div class="weui_cell_bd weui_cell_primary">
+                <p style="font-size:16px;">身高</p>
+            </div>
+
+            <div class="weui_cell_ft" style="font-size:16px;">
+                <p>91cm</p>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/weight.svg" alt=""
+                     style="width:24px;margin-right:5px;display:block">
+            </div>
+
+            <div class="weui_cell_bd weui_cell_primary">
+                <p style="font-size:16px;">体重</p>
+            </div>
+
+            <div class="weui_cell_ft" style="font-size:16px;">
+                <p>13kg</p>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/temperature.svg" alt=""
+                     style="width:24px;margin-right:5px;display:block">
+            </div>
+
+            <div class="weui_cell_bd weui_cell_primary">
+                <p style="font-size:16px;">体温</p>
+            </div>
+
+            <div class="weui_cell_ft" style="font-size:16px;">
+                <p>36.1℃</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top:30px;">
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/body.svg" alt=""
+                     style="width:24px;margin-right:5px;display:block">
+            </div>
+
+            <div class="weui_cell_bd weui_cell_primary">
+                <p style="font-size:16px;">身体指数</p>
+            </div>
+
+            <div class="weui_cell_ft" style="font-size:16px; color:#70BF41">
+                <p>正常</p>
+            </div>
+
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/sport.svg" alt=""
+                     style="width:24px;margin-right:5px;display:block">
+            </div>
+
+            <div class="weui_cell_bd weui_cell_primary">
+                <p style="font-size:16px;">健康指数</p>
+            </div>
+
+            <div class="weui_cell_ft" style="font-size:16px; color:#70BF41">
+                <p>正常</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hd"/>
+</div>
+
+<div class="bd" style="width:100%; position:fixed;bottom:0;">
+    <div class="weui_tab">
+        <div class="weui_tabbar">
+            <a id="savea" href="javascript:;" class="weui_tabbar_item weui_bar_item_on" onclick="saveChange()">
+                <div class="weui_tabbar_icon">
+                    <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/date.svg" alt=""
+                         style="width:24px;"/>
+                </div>
+                <p class="weui_tabbar_label">今日宝贝</p>
+            </a>
+            <a href="javascript:;" class="weui_tabbar_item" onclick="closeWindow()">
+                <div class="weui_tabbar_icon">
+                    <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/return.svg" alt=""
+                         style="width:24px;"/>
+                </div>
+                <p class="weui_tabbar_label">返回</p>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    function closeWindow() {
+        WeixinJSBridge.call('closeWindow');
+    }
+</script>
+</html>

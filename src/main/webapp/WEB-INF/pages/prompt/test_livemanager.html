@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>直播管理</title>
+    <link rel="stylesheet" href="https://weui.io/example.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/0.4.3/style/weui.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/0.4.3/style/weui.min.css"/>
+    </meta>
+    </meta>
+</head>
+
+<body ontouchstart>
+<div class="weui_panel">
+    <div class="weui_panel_hd">哈佛幼儿园</div>
+    <div class="weui_panel_bd">
+        <div class="weui_media_box weui_media_small_appmsg">
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">全部区域</div>
+                    <img id="img_all"
+                         src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png" alt=""
+                         style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb_all" class="weui_switch" type="checkbox"
+                               onclick="checkStatusChange('cb_all', 'img_all')"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="weui_panel" style="margin-top:30px;">
+    <div class="weui_panel_bd">
+        <div class="weui_media_box weui_media_small_appmsg">
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">小一班</div>
+                    <img id="img1" src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png"
+                         alt="" style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb1" class="weui_switch" type="checkbox" onclick="checkStatusChange('cb1', 'img1')"/>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">小二班</div>
+                    <img id="img2" src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png"
+                         alt="" style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb2" class="weui_switch" type="checkbox" onclick="checkStatusChange('cb2', 'img2')"/>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">中一班</div>
+                    <img id="img3" src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png"
+                         alt="" style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb3" class="weui_switch" type="checkbox" onclick="checkStatusChange('cb3', 'img3')"/>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">中二班</div>
+                    <img id="img4" src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png"
+                         alt="" style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb4" class="weui_switch" type="checkbox" onclick="checkStatusChange('cb4', 'img4')"/>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">大一班</div>
+                    <img id="img5" src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png"
+                         alt="" style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb5" class="weui_switch" type="checkbox" onclick="checkStatusChange('cb5', 'img5')"/>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">音乐室</div>
+                    <img id="img6" src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png"
+                         alt="" style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb6" class="weui_switch" type="checkbox" onclick="checkStatusChange('cb6', 'img6')"/>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">美术室</div>
+                    <img id="img7" src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png"
+                         alt="" style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb7" class="weui_switch" type="checkbox" onclick="checkStatusChange('cb7', 'img7')"/>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_switch">
+                    <div class="weui_cell_hd weui_cell_primary">活动大厅</div>
+                    <img id="img8" src="http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png"
+                         alt="" style="width:28px;margin-right:15px;display:block"/>
+                    <div class="weui_cell_ft">
+                        <input id="cb8" class="weui_switch" type="checkbox" onclick="checkStatusChange('cb8', 'img8')"/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hd"/>
+
+<div class="bd" style="width:100%; position:fixed;bottom:0;">
+    <div class="weui_tab">
+        <div class="weui_tabbar">
+            <a id="savea" href="javascript:;" class="weui_tabbar_item" onclick="saveChange()">
+                <div class="weui_tabbar_icon">
+                    <img src="http://static-10001988.cos.myqcloud.com/resource/images/icons/save.svg" alt=""
+                         style="width:24px;"/>
+                </div>
+                <p class="weui_tabbar_label">保存修改</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--BEGIN promptDialog-->
+<div class="weui_dialog_confirm" id="promptDialog" style="display:none;">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div id="dlgTitle" class="weui_dialog_hd"><strong class="weui_dialog_title">注册提示</strong></div>
+        <div class="weui_dialog_bd"><p id="dlgText" align="center"></p></div>
+        <div class="weui_dialog_ft">
+            <a id="centerBtn" href="javascript:;" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
+</div>
+<!--END promptDialog-->
+
+</body>
+
+<script type="text/javascript">
+    function checkStatusChange(boxId, imgId) {
+        var cbox = document.getElementById(boxId);
+        var img = document.getElementById(imgId);
+
+        if (cbox.id == "cb_all") {
+            var src = new Array();
+            var img = document.getElementsByTagName('img');
+            var inp = document.getElementsByTagName('input');
+            for (var j in inp) {
+                //alert(inp[j].id);
+            }
+
+            if (cbox.checked) {
+                for (var i in img) {
+                    if (img[i].src) {
+                        var imgElement = document.getElementById(img[i].id);
+                        imgElement.src = "http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_open.png";
+                        var inpElement = document.getElementById(inp[i].id);
+                        inpElement.checked = true;
+                    }
+                }
+
+            } else {
+                for (var i in img) {
+                    if (img[i].src) {
+                        var imgElement = document.getElementById(img[i].id);
+                        imgElement.src = "http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png";
+                        var inpElement = document.getElementById(inp[i].id);
+                        inpElement.checked = false;
+                    }
+                }
+            }
+        } else if (cbox.checked) {
+            img.src = "http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_open.png";
+        } else {
+            img.src = "http://static-10001988.cos.myqcloud.com/resource/images/icons/camera_close.png";
+        }
+    }
+
+    function saveChange() {
+        var savea = document.getElementById('savea');
+        savea.setAttribute("class", "weui_tabbar_item weui_bar_item_on");
+
+        var promptDlg = document.getElementById('promptDialog');
+        var dlgTitle = document.getElementById('dlgTitle');
+        var dlgText = document.getElementById('dlgText');
+        var centerBtn = document.getElementById('centerBtn');
+        dlgTitle.innerHTML = "保存修改";
+        dlgText.innerHTML = "修改成功";
+        centerBtn.innerHTML = "确认";
+        promptDlg.style.display = "block";
+    }
+
+    //提示框确认按钮
+    var pDialog = document.getElementById("promptDialog");
+    pDialog.addEventListener("click", function () {
+        pDialog.style.display = "none";
+        var savea = document.getElementById('savea');
+        savea.setAttribute("class", "weui_tabbar_item");
+    });
+
+</script>
+</html>

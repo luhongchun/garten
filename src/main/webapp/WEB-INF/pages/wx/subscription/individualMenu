@@ -1,0 +1,25 @@
+{
+            "button": [
+                {
+                    "type": "view", 
+                    "name": "校车到哪了", 
+                    "url": "http://test.kids.smart-f.cn/bus/wx/bus_status_list_for_wx.action?instanceId=c9966c1c424546a5b36822c461695c87", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "微官网", 
+                    "url": "http://lightapp.baidu.com?appid=1546574", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "接送信息", 
+                    "url": "http://test.kids.smart-f.cn/bus/wx/children_shuttle_status_list.action?instanceId=c9966c1c424546a5b36822c461695c87",
+                    "sub_button": [ ]
+                }
+            ], 
+            "matchrule": {
+                "group_id": "101"
+            }
+}

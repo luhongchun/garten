@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>智启科技 | [[${pageName}]]</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation" th:include="nav :: navigation"></nav>
+    <div id="page-wrapper" class="gray-bg">
+        <div class="border-bottom" th:include="header :: headerTop"></div>
+        <div class="row wrapper border-bottom white-bg page-heading" th:fragment="headerNav">
+            <div class="col-lg-10">
+                <h2><span th:text="${pageName}"></span></h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">考勤管理</a>
+                    </li>
+                    <li class="active">
+                        <strong><span th:text="${pageName}"></span></strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>搜索&amp;操作</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content" style="display: block;">
+                            <form th:action="${cards}" method="get">
+                                <div class="row">
+                                     <div class="col-sm-2 m-b-xs">
+                                        <select name="gartenid" id="gartenid" class="form-control" >
+                                            <option value="0" th:selected="${gartenSeletedId==-1}">--请选择幼儿园--</option>
+                                            <option th:each="nc : ${gartenList}" th:value="${nc.id}"
+                                                    th:text="${nc.name}" th:selected="${nc.id==gartenSeletedId}">分类</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2 m-b-xs">
+                                        <select name="state" id="state" class="form-control" >
+                                            <option value="-1" th:selected="${stateSelectedIndex==-1}">--请选卡状态--</option>
+                                            <option th:each="nc, iterStat : ${stateList}" th:value="${iterStat.index}"
+                                                    th:text="${nc}" th:selected="${iterStat.index==stateSelectedIndex}">分类</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4 m-b-xs">
+                                        <label>卡号:</label>
+                                        <input type="text"  name="cardNo" id="cardOrName" placeholder="卡号" />
+                                    </div>
+                                    <div class="col-sm-2 m-b-xs">
+                                        <button class="btn btn-primary btn-block" type="submit"><i
+                                                class="fa fa-search"></i>&nbsp;&nbsp;<strong>查询</strong></button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                 <div class="col-sm-6 m-b-xs">
+                                    <button type="button" class="btn btn-white btn-sm" onclick="addOrEditCard()" data-toggle="modal" data-target="#editModal">
+                                        <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;添加考勤卡&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </button>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>考勤卡列表</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class=" table table-hover" data-page-size="10">
+                                    <thead>
+                                    <tr>
+                                        <th width="5%">ID</th>
+                                        <th width="20%">考勤卡号</th>
+                                        <th width="20%">姓名</th>
+                                        <th width="20%">班级</th>
+                                        <!-- <th width="15%">用户角色</th> -->
+                                        <th width="20%">添加时间</th>
+                                        <!-- <th width="10%">状态</th>  -->
+                                        <th>操作</th> 
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="card, iterStat : ${cardList}">
+                                        <td th:text="${iterStat.index + 1}">Onions</td>
+                                        <td th:text="${card.cardId}">Onions</td>
+                                        <td th:text="${card.gartenUserName}">Onions</td>
+                                        <td th:text="${card.gartenClassName}">Onions</td>
+                                        <!-- <td th:text="${card.roleType} == null ? '' : ${roleList[card.roleType]}">Onions</td>
+                                        <td>
+                                        <td th:text="${roleList[card.roleType]}">Onions</td> -->
+                                        <td th:text="${#dates.format(card.date, 'yyyy/MM/dd HH:mm:ss')}">Onions</td>
+                                      <!-- <td th:text="${stateList[card.state]}">Onions</td>  -->
+                                         <td>
+                                           <a href="#" th:name="${card.id}" th:id="${card.cardId}"   onclick="addOrEditCard(this)" data-toggle="modal" title="绑定">
+                                                <i class="fa fa-edit text-navy">绑定</i></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                           <!-- <a href="#" th:onclick="'javascript:deleteCard('+${card.cardId}+');'" title="删除">
+                                                <i class="fa fa-trash-o text-navy"></i></a>    -->
+                                    </button>
+                                        </td>
+                                     
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="7">
+                                            <ul id="pageHTML" class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal inmodal" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content animated fadeIn">
+                        <div class="modal-header">
+                            <h5 class="modal-title">绑定考勤卡</h5>
+                        </div>
+                        <form method="post" class="form-horizontal" name="cardForm" action="#">
+                            <div class="modal-body">
+                                <input type="hidden" th:name="id"  th:id="id" th:field="${card.id}"/>
+                                <input type="hidden" th:field="${card.state}" th:unless="${#strings.isEmpty(card.id)}"/>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">卡号</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" th:name="cardId" th:id="cardId" th:field="${card.cardId}" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">姓名</label>
+                                    <div class="col-sm-9">
+                                        <div th:replace="component/searchBox :: cascad(selectList=${selectList})"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group" th:class="${#strings.isEmpty(card.id) ? 'hidden': 'form-group'}">
+                                    <label class="col-lg-3 control-label">创建时间</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" th:field="${card.date}"
+                                               placeholder="空" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-white" type="button" value="cancel"
+                                        data-dismiss="modal">取消
+                                </button>
+                                <button class="btn btn-primary" type="submit">保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" th:include="footer :: copyright"></div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script th:src="@{/js/jquery-2.1.1.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+
+<!-- Custom and plugin javascript -->
+<script th:src="@{/js/inspinia.js}"></script>
+<script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+
+<!-- common -->
+<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+
+<script th:inline="javascript">
+    var pageHTML = [[${pageHTML}]];
+    $(document).ready(function () {
+        $("#pageHTML").html(pageHTML);
+        $('[name=cardForm]').submit(function (event) {
+            event.preventDefault();
+            var attr = $.map($(this).serializeArray(), function (item, index) {
+                return '"' + item['name'] + '":"' + item['value'] + '"';
+            });
+            //var data = JSON.stringify("{" + attr + "}");
+            var cardForm = $(this);
+            var data = cardForm.serialize();
+            data = data.replace("selectId0", "gartenId");
+            data = data.replace("selectId1", "gartenClassId");
+            data = data.replace("selectId2", "gartenUserId");
+            $.ajax({
+                type: "POST",
+                url: "/admin/garten/attend/card",
+                data: data,
+                success: function (data) {
+                    if ("success" === data) {
+                        $('#editModal').modal('hide');
+                        window.location.reload();
+                    } else {
+                        alert(data);
+                    }
+                },
+                error: function () {
+                    alert("系统异常！");
+                }
+            });
+        });
+    });
+
+    function addOrEditCard(obj) {
+        var cardIdI = $('input#cardId');
+        var stateI = $('input#state');
+        var createDateI = $('input#createDate');
+        var gartenSelect = $('select#selectId0');
+        var gartenClassSelect = $('select#selectId1');
+        var gartenUserSelect = $('select#selectId2');
+        if (obj) {
+            var cardId = $(obj).attr('id');
+            var id = $(obj).attr('name');
+            document.getElementById("id").value=id;
+            $("#cardId").attr("value",cardId);
+        }
+            $('[name=cardForm]')[0].reset();
+            createDateI.parent().parent().hide();
+            gartenSelect.find("option:selected").removeAttr("selected");
+            gartenSelect.prop('disabled', false).find('option[value=-1]').attr("selected",true);
+            gartenClassSelect.prop('disabled', false).empty()
+                .append($("<option>").val("-1").text("--请选择--"));
+            gartenUserSelect.prop('disabled', false).empty()
+                .append($("<option>").val("-1").text("--请选择--"));
+            if (obj)
+                $('#editModal').modal('show');
+    } 
+    function deleteCard(id) {
+        var deleteTag = confirm("确定删除此条信息?");
+        if (deleteTag) {
+            $.ajax({
+                type: "DELETE",
+                url: "card?id=" + id,
+                contentType: "application/json; charset=utf-8",
+                success: function (msg) {
+                    window.location.reload();
+                },
+                error: function () {
+                    alert("系统异常！");
+                }
+            });
+        }
+    }
+
+    var cardForm = document.forms.cardForm;
+
+    function fillSelect(select, list) {
+        for (var i = select.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+        $.each($.parseJSON(list), function (index, ret) {
+            var option = new Option(ret.text, ret.value);
+            select.add(option);
+        });
+    }
+
+    cardForm.selectId0.addEventListener("change", function (event) {
+        var value = event.target.value;
+        $.ajax({
+            type: "GET",
+            url: "/admin/garten/classes/gartenid/" + value,
+            contentType: "application/json; charset=utf-8",
+            success: function (classList) {
+                fillSelect(cardForm.selectId1, classList);
+            },
+            error: function () {
+                alert("系统异常！");
+            }
+        });
+    });
+    cardForm.selectId1.addEventListener("change", function (event) {
+        var value = event.target.value;
+        $.ajax({
+            type: "GET",
+            url: "/admin/garten/students/classid/" + value,
+            contentType: "application/json; charset=utf-8",
+            success: function (classList) {
+                fillSelect(cardForm.selectId2, classList);
+            },
+            error: function () {
+                alert("系统异常！");
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

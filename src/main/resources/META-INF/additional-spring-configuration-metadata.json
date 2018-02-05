@@ -1,0 +1,189 @@
+{
+  "properties": [
+    {
+      "name": "service.biz.wan.url.base",
+      "type": "java.lang.String",
+      "description": "A description for 'service.biz.wan.url.base'"
+    },
+    {
+      "name": "service.biz.version",
+      "type": "java.lang.String",
+      "description": "A description for 'service.biz.version'"
+    },
+    {
+      "name": "school.bus.arrived.voiceid.in1min",
+      "type": "java.lang.String",
+      "description": "A description for 'school.bus.arrived.voiceid.in1min'"
+    },
+    {
+      "name": "school.bus.arrived.voiceid.in3min",
+      "type": "java.lang.String",
+      "description": "A description for 'school.bus.arrived.voiceid.in3min'"
+    },
+    {
+      "name": "school.bus.arrived.voiceid.in5min",
+      "type": "java.lang.String",
+      "description": "A description for 'school.bus.arrived.voiceid.in5min'"
+    },
+    {
+      "name": "school.bus.delayed.voiceid.10min",
+      "type": "java.lang.String",
+      "description": "A description for 'school.bus.delayed.voiceid.10min'"
+    },
+    {
+      "name": "school.bus.delayed.voiceid.20min",
+      "type": "java.lang.String",
+      "description": "A description for 'school.bus.delayed.voiceid.20min'"
+    },
+    {
+      "name": "school.bus.delayed.voiceid.30min",
+      "type": "java.lang.String",
+      "description": "A description for 'school.bus.delayed.voiceid.30min'"
+    },
+    {
+      "name": "system.sms.template.ids",
+      "type": "java.lang.String",
+      "description": "A description for 'system.sms.template.ids'"
+    },
+    {
+      "name": "system.sms.wan.server.host",
+      "type": "java.lang.String",
+      "description": "A description for 'system.sms.wan.server.host'"
+    },
+    {
+      "name": "system.sms.wan.server.port",
+      "type": "java.lang.String",
+      "description": "A description for 'system.sms.wan.server.port'"
+    },
+    {
+      "name": "system.sms.account.sid",
+      "type": "java.lang.String",
+      "description": "A description for 'system.sms.account.sid'"
+    },
+    {
+      "name": "system.sms.auth.token",
+      "type": "java.lang.String",
+      "description": "A description for 'system.sms.auth.token'"
+    },
+    {
+      "name": "system.sms.app.id",
+      "type": "java.lang.String",
+      "description": "A description for 'system.sms.app.id'"
+    },
+    {
+      "name": "system.wa.ta.sid",
+      "type": "java.lang.String",
+      "description": "A description for 'system.wa.ta.sid'"
+    },
+    {
+      "name": "text.tip.success",
+      "type": "java.lang.String",
+      "description": "A description for 'text.tip.success'"
+    },
+    {
+      "name": "text.tip.failed",
+      "type": "java.lang.String",
+      "description": "A description for 'text.tip.failed'"
+    },
+    {
+      "name": "text.biz.device.camera.closed",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.device.camera.closed'"
+    },
+    {
+      "name": "text.biz.garten.name",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.name'"
+    },
+    {
+      "name": "text.biz.garten.video.news.live.title",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.news.live.title'"
+    },
+    {
+      "name": "text.biz.garten.video.news.live.des",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.news.live.des'"
+    },
+    {
+      "name": "text.biz.garten.video.news.live.cover",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.news.live.cover'"
+    },
+    {
+      "name": "text.biz.garten.video.play.live.title",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.play.live.title'"
+    },
+    {
+      "name": "text.biz.garten.video.play.live.des",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.play.live.des'"
+    },
+    {
+      "name": "text.biz.garten.video.play.live.cover",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.play.live.cover'"
+    },
+    {
+      "name": "text.biz.garten.video.closed",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.closed'"
+    },
+    {
+      "name": "text.biz.garten.video.none",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.none'"
+    },
+    {
+      "name": "text.biz.garten.video.template.closeup.title",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.template.closeup.title'"
+    },
+    {
+      "name": "text.biz.garten.video.template.closeup.remark",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.garten.video.template.closeup.remark'"
+    },
+    {
+      "name": "text.biz.wx.subscribe",
+      "type": "java.lang.String",
+      "description": "A description for 'text.biz.wx.subscribe'"
+    },
+    {
+      "name": "company.website",
+      "type": "java.lang.String",
+      "description": "A description for 'company.website'"
+    },
+    {
+      "name": "com.qcloud.config.api.appid",
+      "type": "java.lang.String",
+      "description": "A description for 'com.qcloud.config.api.appid'"
+    },
+    {
+      "name": "com.qcloud.config.api.secretid",
+      "type": "java.lang.String",
+      "description": "A description for 'com.qcloud.config.api.secretid'"
+    },
+    {
+      "name": "com.qcloud.config.api.secretkey",
+      "type": "java.lang.String",
+      "description": "A description for 'com.qcloud.config.api.secretkey'"
+    },
+    {
+      "name": "com.qcloud.config.project.appid",
+      "type": "java.lang.String",
+      "description": "A description for 'com.qcloud.config.project.appid'"
+    },
+    {
+      "name": "com.qcloud.config.project.secretid",
+      "type": "java.lang.String",
+      "description": "A description for 'com.qcloud.config.project.secretid'"
+    },
+    {
+      "name": "com.qcloud.config.project.secretkey",
+      "type": "java.lang.String",
+      "description": "A description for 'com.qcloud.config.project.secretkey'"
+    }
+  ]
+}

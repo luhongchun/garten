@@ -1,0 +1,136 @@
+body {
+    background: #c5daf9;
+}
+
+.point {
+    height: 25px;
+    background: #fc8e6f url(../images/icon_uparrow.png) no-repeat right center;;
+    line-height: 25px;
+    font-size: 12px;
+    color: #FFF;
+    background-size: 35px 15px;
+}
+
+.point p {
+    background: url(../images/icon_point.png) no-repeat left center;
+    float: right;
+    padding-left: 17px;
+    background-size: 14px 13px;
+    padding-right: 40px;
+}
+
+.main_body {
+    background: url(../images/bg.png) no-repeat center bottom;
+    background-size: 320px 205px;
+    min-height: 480px;
+}
+
+.title {
+    height: auto;
+    overflow: hidden;
+    margin: 10px 20px;
+}
+
+.title h1 {
+    line-height: 30px;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.title_info {
+    height: 25px;
+    display: block;
+    border-bottom: #999 1px dashed;
+    border-top: #999 1px dashed;
+    font-size: 12px;
+    color: #666;
+    line-height: 25px;
+    padding-left: 5px;
+}
+
+.title_info a {
+    color: #fc8e6f;
+    margin: 0 20px;
+    font-weight: bold;
+}
+
+.vedio {
+    width: 320px;
+    height: 208px;
+    background: url(../images/vedio_bg.png) no-repeat 0 0;
+    margin: 0 auto;
+    background-size: 320px 208px;
+}
+
+.button {
+    width: 276px;
+    height: 35px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.button a {
+    width: 256px;
+    height: 35px;
+    background: #fc8e6f;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    line-height: 35px;
+    color: #FFF;
+    padding: 0 10px;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+}
+
+.button a:hover {
+    background: #ff683d;
+}
+
+.news {
+    height: 40px;
+    background: #FFF url(../images/icon_01.png) no-repeat 10px 12px;
+    background-size: 26px 16px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 40px;
+    padding-left: 40px;
+    bottom: 33px;
+    position: absolute;
+    width: 100%;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+}
+
+.news a {
+    color: #6ec1b9;
+}
+
+.news a:hover {
+    color: #fc8e6f;
+}
+
+.foot {
+    height: 33px;
+    border-top: #CCC 1px solid;
+    background: #FFF url(../images/icon_smart.png) no-repeat center center;
+    background-size: 156px 19px;
+    font-size: 12px;
+    color: #6ec1b9;
+    text-align: center;
+    line-height: 33px;
+    position: absolute;
+    bottom: 0;
+    z-index: 333;
+    width: 100%;
+}
+
+.foot a {
+    color: #6ec1b9;
+}
+
+.foot a:hover {
+    color: #fc8e6f;
+}

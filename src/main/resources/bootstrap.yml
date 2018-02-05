@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    config:
+     uri: http://smart:sf20150707@test.mircoservice.smart-f.cn:8888
+     name: smart_cloud_garten_service
+     profile: default
+     label: dev
+  datasource:
+    url: jdbc:mysql://569a63ee27f02.sh.cdb.myqcloud.com:7259/sf_dev?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: PublicData3306
+    test-while-idle: true
+    default-auto-commit: true
+    max-idle: 30
+    initial-size: 3
+    connection-timeout: 30
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  mvc:
+    async:
+      request-timeout: 30000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://dev001.smart-f.cn:8761/eureka/

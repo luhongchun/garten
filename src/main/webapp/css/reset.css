@@ -1,0 +1,99 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+address, cite, dfn, em, var {
+    font-style: normal;
+}
+
+code, kbd, pre, samp, tt {
+    font-family: "Courier New", Courier, monospace;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    color: #999
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+}
+
+label, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="password"], select {
+    cursor: pointer;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+ins {
+    text-decoration: none;
+}
+
+abbr[title], acronym[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+mark {
+    background-color: yellow;
+}
+
+input[type=submit], input[type=button], input[type=text], input[type=password], select {
+    -webkit-appearance: none;
+    box-sizing: content-box;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.fix:after, .clearfix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.fix, .clearfix {
+    *zoom: 1;
+}

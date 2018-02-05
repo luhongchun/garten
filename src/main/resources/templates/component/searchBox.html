@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Insert title here</title>
+</head>
+<body>
+
+<div class="ibox float-e-margins" th:fragment="searchBox(action, keywordPlacehoder, selectList, addBtnText)">
+    <div class="ibox-title">
+        <h5>搜索&amp;操作</h5>
+        <div class="ibox-tools">
+            <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+    <div class="ibox-content" style="display: block;">
+        <form name="searchForm" th:action="@{${action}}" method="get">
+            <div class="row">
+                <div class="col-sm-2 m-b-xs" th:unless="${#strings.isEmpty(keywordPlacehoder)}">
+                    <input id="title" name="keyword" th:placeholder="${keywordPlacehoder}" class="form-control"
+                           type="text"/>
+                </div>
+                <div class="col-sm-2 m-b-xs" th:each="op, it : ${selectList}">
+                    <select th:name="|selectI${it.index}|" th:id="|selectIdI${it.index}|" class="form-control">
+                        <option value="-1" th:selected="true">--请选择--</option>
+                        <option th:each="nc,iterStat : ${op}" th:value="${nc.key}"
+                                th:text="${nc.value}" th:selected="${nc.selected}"></option>
+                    </select>
+                </div>
+                <div class="col-sm-2 m-b-xs">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        <i class="fa fa-search"></i>&nbsp;&nbsp;<strong>搜索</strong>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-sm-6 m-b-xs">
+                <button type="button" class="btn btn-white btn-sm" data-toggle="modal" data-target="#editModal">
+                    <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;[[${addBtnText}]]&nbsp;&nbsp;&nbsp;&nbsp;
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ibox float-e-margins"
+     th:fragment="searchBoxDate(action, keywordPlacehoder, dateBetween, selectList, addBtnText)">
+    <div class="ibox-title">
+        <h5>搜索&amp;操作</h5>
+        <div class="ibox-tools">
+            <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+    <div class="ibox-content" style="display: block;">
+        <form name="searchForm" th:action="@{${action}}" method="get">
+            <div class="row">
+                <div class="col-sm-2 m-b-xs" th:unless="${#strings.isEmpty(keywordPlacehoder)}">
+                    <input id="title" name="keyword" th:placeholder="${keywordPlacehoder}" class="form-control"
+                           type="text"/>
+                </div>
+                <div class="col-sm-2 m-b-xs" th:each="op, it : ${selectList}">
+                    <select th:name="|select${it.index}|" th:id="|selectId${it.index}|" class="form-control">
+                        <option value="-1" th:selected="true">--请选择--</option>
+                        <option th:each="nc,iterStat : ${op}" th:value="${nc.key}"
+                                th:text="${nc.value}" th:selected="${nc.selected}"></option>
+                    </select>
+                </div>
+                <div class="col-sm-3 m-b-xs">
+                    <input class="form-control" type="text" name="daterange" th:value="${dateBetween}"/>
+                </div>
+                <div class="col-sm-2 m-b-xs">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        <i class="fa fa-search"></i>&nbsp;&nbsp;<strong>搜索</strong>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-sm-6 m-b-xs">
+                <button type="button" class="btn btn-white btn-sm" data-toggle="modal" data-target="#editModal">
+                    <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;[[${addBtnText}]]&nbsp;&nbsp;&nbsp;&nbsp;
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:fragment="cascad(selectList)">
+<select th:each="op, it : ${selectList}" th:id="|selectId${it.index}|" th:name="|selectId${it.index}|" class="form-control">
+    <option value="-1" th:selected="true">--请选择--</option>
+    <option th:each="nc,iterStat : ${op}" th:value="${nc.key}" th:text="${nc.value}" th:selected="${nc.selected}"></option>
+</select>
+</th:block>
+
+</body>
