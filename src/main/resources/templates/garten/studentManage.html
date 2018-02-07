@@ -114,9 +114,17 @@
                                          <div th:replace="component/searchBox :: cascad(selectList=${selectList})"></div>
                                         <input type="text" th:field="${student.aliasName}" placeholder="请输入学生姓名"
                                                class="form-control"/>
-                                                <input type="text"  id="sex1"  name ="sex1"   placeholder="请输入学生性别"
-                                               class="form-control"/>
-                                    </div>  
+                                               
+                                    </div>
+	                                <label class="col-sm-3 control-label">性别:</label>
+	                                <div class="col-sm-9">
+		                                <label class="radio-inline" th:inline="text">
+										  <input type="radio" name="sex1"  id="sex1"> 男
+										</label>
+										<label class="radio-inline" th:inline="text">
+										  <input type="radio" name="sex1"  id="sex1"> 女
+										</label>
+									</div>
                                 </div>
                                 <!--
                                 <div class="ui-field-contain">

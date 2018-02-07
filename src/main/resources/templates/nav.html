@@ -2,171 +2,187 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8"/>
-    <title>Insert title here</title>
-    <style>
-    a:visited
-{
-background-color:yellow;
+	<meta charset="UTF-8"/>
+	<title>Insert title here</title>
+	<style>
+		a:visited {
+			background-color: yellow;
 
-}
-    </style>
-<script type="text/javascript">
-$(document).ready(function () {
-   
-	$(function(){
-	    $('a').click(function() {
-	        obj = $(this).parent().parent();
-	        alert(obj.prop('class'));
-	        var class1 = obj.prop('class')="collapse in";
-	    });
-	   });
-});
-</script>
+		}
+	</style>
+	<script type="text/javascript">
+	</script>
 </head>
 <body>
 <nav class="navbar-default navbar-static-side" role="navigation" th:fragment="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav metismenu" id="side-menu">
-            <li class="nav-header">
-                <div class="dropdown profile-element">
+	<div class="sidebar-collapse">
+		<ul class="nav metismenu" id="side-menu">
+			<li class="nav-header">
+				<div class="dropdown profile-element">
                     <span>
                         <img alt="image" class="img-circle" th:src="@{/img/profile_small.jpg}"/>
                     </span>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                             <span class="block m-t-xs">
                                 <strong class="font-bold"><span th:text="${session.user.loginId}"></span></strong>
                             </span>
                         </span>
-                     <!-- <span class="text-muted text-xs block"><span th:text="${session.user.phone}"></span>
-                            <b class="caret"></b>
-                        </span>
-                        -->
-                    </a>
-                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Mailbox</a></li>
-                        <li class="divider"></li>
-                        <li><a th:href="@{/admin/logout}">Logout</a></li>
-                    </ul>
-                </div>
-                <div class="logo-element">
-                    Smart
-                </div>
-            </li>
-           <!--  <li>
-                <a th:href="@{/admin/dashboard}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">仪表盘</span></a>
-            </li>--> 
-            <li>
-                <a href="#">
-                    <i class="fa fa-child"></i>
-                    <span class="nav-label">幼儿园管理</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level collapse in">
-                     <li><a th:href="@{/admin/garten/gartens}">幼儿园管理</a></li> 
-                    <li><a th:href="@{/admin/garten/classes}">班级管理</a></li>
-  					<li><a th:href="@{/admin/garten/teachers}">老师管理</a></li> 
-                    <li><a th:href="@{/admin/garten/students}">学生管理</a></li>
-                    <!-- <li><a th:href="@{/admin/garten/parents}">家长管理</a></li>-->
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-calendar"></i>
-                    <span class="nav-label">考勤管理</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level collapse in">
-                    <li><a th:href="@{/admin/garten/attend/cards}">考勤卡管理</a></li>
-                    <li><a th:href="@{/admin/garten/attend/records}">考勤记录</a></li>
-                </ul>
-            </li>
-     <!--        <li id="news">
-                <a href="#">
-                    <i class="fa fa-desktop"></i><span class="nav-label">设备管理</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a th:href="@{admin/device/boxes}">盒子管理</a></li>
-                    <li><a th:href="@{admin/device/cameras}">摄像头管理</a></li>
-                    <li><a th:href="@{admin/device/cameras}">校车管理</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-video-camera"></i><span class="nav-label">视频管理</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level collapse">
-                    <li>
-                        <a href="#"><span class="nav-label">视频处理</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="#">视频抽帧</a></li>
-                            <li><a href="#">视频分类</a></li>
-                            <li><a href="#">初始化分组</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">视频审核</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-user"></i> <span class="nav-label">人脸管理</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="#">分组管理</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-weixin"></i> <span class="nav-label">微信管理</span><span
-                        class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="#">公众号管理</a></li>
-                    <li><a href="#">公众号注册</a></li>
-                    <li><a href="#">公众号维护</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-pie-chart"></i> <span class="nav-label">统计分析</span><span
-                        class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="#">考勤统计</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商城管理</span><span
-                        class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="#">地区设置</a></li>
-                    <li><a href="#">支付方式</a></li>
-                    <li><a href="#">配送方式</a></li>
-                    <li><a href="#">物流公司</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-envelope"></i> <span class="nav-label">消息管理</span>
-                    <span class="label label-warning pull-right">16</span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="#">消息管理</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-cog"></i><span class="nav-label">系统设置</span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a th:href="@{/admin/setting/sysusers}">系统管理员</a></li>
-                    <li><a href="#">管理员角色</a></li>
-                    <li><a href="#">管理员权限</a></li>
-                </ul>
-            </li>
-            <li>
-                <a th:href="@{/admin/dashboard}">
-                    <i class="fa fa-diamond"></i> <span class="nav-label">首页</span>
-                </a>
-            </li>
-             -->
-        </ul>
-    </div>
+						<!-- <span class="text-muted text-xs block"><span th:text="${session.user.phone}"></span>
+							   <b class="caret"></b>
+						   </span>
+						   -->
+					</a>
+					<ul class="dropdown-menu animated fadeInRight m-t-xs">
+						<li><a href="#">Profile</a></li>
+						<li><a href="#">Contacts</a></li>
+						<li><a href="#">Mailbox</a></li>
+						<li class="divider"></li>
+						<li><a th:href="@{/admin/logout}">Logout</a></li>
+					</ul>
+				</div>
+				<div class="logo-element">
+					Smart
+				</div>
+			</li>
+			<!--  <li>
+				 <a th:href="@{/admin/dashboard}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">仪表盘</span></a>
+			 </li>-->
+			<li>
+				<a href="#">
+					<i class="fa fa-child"></i>
+					<span class="nav-label">幼儿园管理</span><span class="fa arrow"></span>
+				</a>
+				<ul id="garten" class="nav nav-second-level collapse">
+					<!-- <li id="garten_manage" ><a th:href="@{/admin/garten/gartens}">幼儿园管理</a></li> -->
+					<li id="class_manage" ><a th:href="@{/admin/garten/classes}">班级管理</a></li>
+					<li id="teacher_manage" ><a th:href="@{/admin/garten/teachers}">老师管理</a></li>
+					<li id="student_manage" ><a th:href="@{/admin/garten/students}">学生管理</a></li>
+					<!-- <li><a th:href="@{/admin/garten/parents}">家长管理</a></li>-->
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa-calendar"></i>
+					<span class="nav-label">考勤管理</span><span class="fa arrow"></span>
+				</a>
+				<ul id="attend" class="nav nav-second-level collapse">
+					<li id="card_manage" ><a th:href="@{/admin/garten/attend/cards}">考勤卡管理</a></li>
+					<li id="record_manage" ><a th:href="@{/admin/garten/attend/records}">考勤记录</a></li>
+				</ul>
+			</li>
+			<!--        <li id="news">
+					   <a href="#">
+						   <i class="fa fa-desktop"></i><span class="nav-label">设备管理</span><span class="fa arrow"></span>
+					   </a>
+					   <ul class="nav nav-second-level collapse">
+						   <li><a th:href="@{admin/device/boxes}">盒子管理</a></li>
+						   <li><a th:href="@{admin/device/cameras}">摄像头管理</a></li>
+						   <li><a th:href="@{admin/device/cameras}">校车管理</a></li>
+					   </ul>
+				   </li>
+				   <li>
+					   <a href="#">
+						   <i class="fa fa-video-camera"></i><span class="nav-label">视频管理</span><span class="fa arrow"></span>
+					   </a>
+					   <ul class="nav nav-second-level collapse">
+						   <li>
+							   <a href="#"><span class="nav-label">视频处理</span><span class="fa arrow"></span></a>
+							   <ul class="nav nav-second-level collapse">
+								   <li><a href="#">视频抽帧</a></li>
+								   <li><a href="#">视频分类</a></li>
+								   <li><a href="#">初始化分组</a></li>
+							   </ul>
+						   </li>
+						   <li><a href="#">视频审核</a></li>
+					   </ul>
+				   </li>
+				   <li>
+					   <a href="#"><i class="fa fa-user"></i> <span class="nav-label">人脸管理</span><span class="fa arrow"></span></a>
+					   <ul class="nav nav-second-level collapse">
+						   <li><a href="#">分组管理</a></li>
+					   </ul>
+				   </li>
+				   <li>
+					   <a href="#"><i class="fa fa-weixin"></i> <span class="nav-label">微信管理</span><span
+							   class="fa arrow"></span></a>
+					   <ul class="nav nav-second-level collapse">
+						   <li><a href="#">公众号管理</a></li>
+						   <li><a href="#">公众号注册</a></li>
+						   <li><a href="#">公众号维护</a></li>
+					   </ul>
+				   </li>
+				   <li>
+					   <a href="#"><i class="fa fa-pie-chart"></i> <span class="nav-label">统计分析</span><span
+							   class="fa arrow"></span></a>
+					   <ul class="nav nav-second-level collapse">
+						   <li><a href="#">考勤统计</a></li>
+					   </ul>
+				   </li>
+				   <li>
+					   <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">商城管理</span><span
+							   class="fa arrow"></span></a>
+					   <ul class="nav nav-second-level collapse">
+						   <li><a href="#">地区设置</a></li>
+						   <li><a href="#">支付方式</a></li>
+						   <li><a href="#">配送方式</a></li>
+						   <li><a href="#">物流公司</a></li>
+					   </ul>
+				   </li>
+				   <li>
+					   <a href="#">
+						   <i class="fa fa-envelope"></i> <span class="nav-label">消息管理</span>
+						   <span class="label label-warning pull-right">16</span></a>
+					   <ul class="nav nav-second-level collapse">
+						   <li><a href="#">消息管理</a></li>
+					   </ul>
+				   </li>
+				   <li>
+					   <a href="#">
+						   <i class="fa fa-cog"></i><span class="nav-label">系统设置</span><span class="fa arrow"></span>
+					   </a>
+					   <ul class="nav nav-second-level collapse">
+						   <li><a th:href="@{/admin/setting/sysusers}">系统管理员</a></li>
+						   <li><a href="#">管理员角色</a></li>
+						   <li><a href="#">管理员权限</a></li>
+					   </ul>
+				   </li>
+				   <li>
+					   <a th:href="@{/admin/dashboard}">
+						   <i class="fa fa-diamond"></i> <span class="nav-label">首页</span>
+					   </a>
+				   </li>
+					-->
+		</ul>
+	</div>
+	<script th:inline="javascript" type="text/javascript">
+		var test = window.location.href;
+		if (test.indexOf('garten/gartens') > 0) {
+			document.getElementById('garten').className += " " + "in";
+			document.getElementById('garten_manage').className += "active";
+		} else if (test.indexOf('garten/classes') > 0) {
+			document.getElementById('garten').className += " " + "in";
+			document.getElementById('class_manage').className += "active";
+
+		} else if (test.indexOf('garten/teachers') > 0) {
+			document.getElementById('garten').className += " " + "in";
+			document.getElementById('teacher_manage').className += "active";
+
+		} else if (test.indexOf('garten/students') > 0) {
+			document.getElementById('garten').className += " " + "in";
+			document.getElementById('student_manage').className += "active";
+
+		} else if (test.indexOf('attend/cards') > 0) {
+			document.getElementById('attend').className += " " + "in";
+			document.getElementById('card_manage').className += "active";
+		} else if (test.indexOf('attend/records') > 0) {
+			document.getElementById('attend').className += " " + "in";
+			document.getElementById('record_manage').className += "active";
+		}
+
+	</script>
 </nav>
+
 </body>
 </html>
 

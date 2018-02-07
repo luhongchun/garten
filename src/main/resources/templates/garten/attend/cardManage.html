@@ -68,7 +68,7 @@
                                         <input type="text"  name="cardNo" id="cardOrName" placeholder="卡号" />
                                     </div>
                                     <div class="col-sm-2 m-b-xs">
-                                        <button class="btn btn-primary btn-block" type="submit"><i
+                                        <button class="btn btn-primary btn-block" type="submit" id="search_judgment"><i
                                                 class="fa fa-search"></i>&nbsp;&nbsp;<strong>查询</strong></button>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                                         <!-- <th width="15%">用户角色</th> -->
                                         <th width="20%">添加时间</th>
                                         <!-- <th width="10%">状态</th>  -->
-                                        <th>操作</th> 
+                                        <th class="alternative">操作</th> 
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -120,7 +120,7 @@
                                         <td th:text="${roleList[card.roleType]}">Onions</td> -->
                                         <td th:text="${#dates.format(card.date, 'yyyy/MM/dd HH:mm:ss')}">Onions</td>
                                       <!-- <td th:text="${stateList[card.state]}">Onions</td>  -->
-                                         <td>
+                                         <td class="alternative">
                                            <a href="#" th:name="${card.id}" th:id="${card.cardId}"   onclick="addOrEditCard(this)" data-toggle="modal" title="绑定">
                                                 <i class="fa fa-edit text-navy">绑定</i></a> &nbsp;&nbsp;&nbsp;&nbsp;
                                            <!-- <a href="#" th:onclick="'javascript:deleteCard('+${card.cardId}+');'" title="删除">
@@ -205,6 +205,16 @@
 <script th:inline="javascript">
     var pageHTML = [[${pageHTML}]];
     $(document).ready(function () {
+    	
+		//判断考勤卡状态
+		$("#search_judgment").click(){
+			alert("ssssssssss");
+			if($("#state option").value()==="已绑定" || $("#state option").value()==="废弃" ){
+				$(".alternative").hidden();
+			}
+		};
+    		//end
+    	
         $("#pageHTML").html(pageHTML);
         $('[name=cardForm]').submit(function (event) {
             event.preventDefault();

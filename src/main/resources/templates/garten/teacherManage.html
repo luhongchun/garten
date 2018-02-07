@@ -155,12 +155,16 @@
                                                class="form-control"/>
                                     </div>
                                 </div>
-                                                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">性别:</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" th:name="sex"  th:id="sex" placeholder="请输入老师性别"
-                                               class="form-control"/>
-                                    </div>
+                                <div class="form-group">
+	                                <label class="col-sm-3 control-label">性别:</label>
+	                                <div class="col-sm-9">
+		                                <label class="radio-inline" th:inline="text">
+										  <input type="radio" th:name="sex"  th:id="sex" value="option1"> 男
+										</label>
+										<label class="radio-inline" th:inline="text">
+										  <input type="radio" th:name="sex"  th:id="sex" value="option2"> 女
+										</label>
+									</div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">手机号*:</label>

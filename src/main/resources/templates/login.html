@@ -16,28 +16,60 @@
 
     <!-- Sweet Alert -->
     <link th:href="@{/css/plugins/sweetalert/sweetalert.css}" rel="stylesheet"/>
+    <style>
+    		body{
+    			background:url("/img/login_background.png");
+    			background-position: center 0;  
+		  	background-repeat: no-repeat;  
+		  	background-attachment: fixed;  
+		  	background-size: cover;  	
+		  	-webkit-background-size: cover;  
+		  	-o-background-size: cover;  
+		  	-moz-background-size: cover;  
+		  	-ms-background-size: cover;
+    		}
+    		.glyphicon{
+    			top:0;
+    		}
+    		.logo-wrap{
+    			padding-top:12em;
+    		}
+    		.login-wrap{
+    			padding-top:12em;
+    			max-width: 400px;
+		    z-index: 3;
+    		}
+    		small{
+    			color:#ccc;
+    		}
+    </style>
 
 </head>
 
-<body class="gray-bg">
+<body>
 
-<div class="middle-box text-center loginscreen animated fadeInDown">
-    <div>
-        <div>
-            <h2 class="logo-name">Smart</h2>
-        </div>
-        <h3>智启科技</h3>
-        <p>
-            智慧影像幼儿园-运维管理
-        </p>
+<div class="entrance-wrap row">
+	<div class="header">
+		<img class="img-responsive" width="100%" src="/img/header_background.png"/>
+	</div>
+	<div class="logo-wrap animated fadeInDown col-xs-10 col-sm-4 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+		<img class="img-responsive center-block" width="70%" src="/img/logo.png"/>
+	</div>
+	<div class="login-wrap animated fadeInDown col-xs-10 col-sm-4 col-md-3 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
         <form class="m-t" role="form" action="login" method="post">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="userName" name="userName" required=""/>
+	            <div class="input-group">
+			      <div class="input-group-addon glyphicon glyphicon-user"></div>
+                	  <input type="text" class="form-control" placeholder="请输入用户名" name="userName" required=""/>
+			    </div>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="password" name="password" required=""/>
+	            <div class="input-group">
+			      <div class="input-group-addon glyphicon glyphicon-lock"></div>
+                	  <input type="password" class="form-control" placeholder="请输入密码" name="password" required=""/>
+                	</div>
             </div>
-            </br></br>
+            </br></br></br>
             <button type="submit" class="btn btn-primary block full-width m-b">登录</button>
             <!-- 
             <a th:href="@{register}" href="#">
@@ -52,7 +84,7 @@
         <p class="m-t">
             <small>北京智启科技有限公司 Copyright © 2017 SmartFuture Inc. 保留所有权利</small>
         </p>
-    </div>
+	</div>
 </div>
 
 <!-- Mainly scripts -->
