@@ -59,7 +59,7 @@
                                     <div class="col-sm-2 m-b-xs">
                                         <select name="state" id="state" class="form-control" >
                                             <option value="-1" th:selected="${stateSelectedIndex==-1}">--请选卡状态--</option>
-                                            <option th:each="nc, iterStat : ${stateList}" th:value="${iterStat.index}"
+                                            <option id="choose_option" th:each="nc, iterStat : ${stateList}" th:value="${iterStat.index}"
                                                     th:text="${nc}" th:selected="${iterStat.index==stateSelectedIndex}">分类</option>
                                         </select>
                                     </div>
@@ -205,14 +205,13 @@
 <script th:inline="javascript">
     var pageHTML = [[${pageHTML}]];
     $(document).ready(function () {
-    	
 		//判断考勤卡状态
-		$("#search_judgment").click(){
-			alert("ssssssssss");
-			if($("#state option").value()==="已绑定" || $("#state option").value()==="废弃" ){
-				$(".alternative").hidden();
-			}
-		};
+		$("#search_judgment").click(function(){
+			var curValue=$("#state").find("option:selected").text();
+			if(curValue==="已绑定" || curValue==="废弃" ){
+			    $(".alternative").hide();
+		    }
+		})
     		//end
     	
         $("#pageHTML").html(pageHTML);
